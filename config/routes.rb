@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#create'
   post '/sign-in' => 'sessions#create', as: :signin
   get '/sign-out' => 'sessions#destroy', as: :signout
+  resources :parks, only: [:index, :show]
 
 
   # Example of regular route:
