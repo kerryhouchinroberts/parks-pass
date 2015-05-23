@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150522201247) do
+ActiveRecord::Schema.define(version: 20150523062150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "parks", force: :cascade do |t|
+    t.string   "name"
+    t.string   "location"
+    t.string   "latitude"
+    t.string   "longitude"
+    t.string   "established"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "oauth_user_id"
@@ -22,5 +32,13 @@ ActiveRecord::Schema.define(version: 20150522201247) do
     t.string "name"
     t.string "image_url"
   end
+
+  create_table "users_parks", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "park_id"
+  end
+
+  add_index "users_parks", ["park_id"], name: "index_users_parks_on_park_id", using: :btree
+  add_index "users_parks", ["user_id"], name: "index_users_parks_on_user_id", using: :btree
 
 end
