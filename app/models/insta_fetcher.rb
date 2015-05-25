@@ -18,4 +18,13 @@ class InstaFetcher
     JSON.parse(response.body)
   end
 
+  def dept_of_interior_pics(token)
+    response = @insta_connection.get do |req|
+      req.url "v1/users/174435186/media/recent/"
+      req.params['access_token'] = token
+      req.params['count'] = "50"
+    end
+    JSON.parse(response.body)
+  end
+
 end
