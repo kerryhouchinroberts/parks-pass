@@ -1,2 +1,20 @@
- @import "bootstrap-sprockets";
- @import "bootstrap";
+//Bootstrap & Bootswatch styling
+@import "bootstrap-sprockets";
+@import "bootswatch/slate/variables";
+@import "bootstrap";
+body { padding-top: 60px; }
+@import "bootswatch/slate/bootswatch";
+
+//Reset inconsistencies between browsers
+@import "reset";
+
+//Google fonts
+@import url(http://fonts.googleapis.com/css?family=Julius+Sans+One);
+
+//Homepage styling
+.navbar-brand, .nav{
+  font-family: 'Julius Sans One', sans-serif;
+}
+.navbar-brand{
+  font-size: 36px
+}

@@ -12,6 +12,7 @@ gem 'omniauth'
 gem 'omniauth-instagram'
 gem 'faraday'
 gem 'bootstrap-sass', '~> 3.3.4'
+gem 'bootswatch-rails'
 gem 'dotenv-rails'
 
 group :production do
