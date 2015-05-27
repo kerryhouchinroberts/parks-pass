@@ -2,9 +2,7 @@
 @import "bootstrap-sprockets";
 @import "bootswatch/slate/variables";
 @import "bootstrap";
-body {
-  padding-top: 60px;
-}
+
 @import "bootswatch/slate/bootswatch";
 
 //Reset inconsistencies between browsers
@@ -19,4 +17,17 @@ body {
 }
 .navbar-brand{
   font-size: 36px
+}
+
+// Google Maps sizing
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%; margin: 0; padding: 60px;
+}
+
+#map-canvas {
+  height: 100%;
 }
