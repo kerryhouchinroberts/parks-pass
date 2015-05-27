@@ -14,6 +14,8 @@ gem 'faraday'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'bootswatch-rails'
 gem 'dotenv-rails'
+gem 'wikipedia-client'
+gem 'wikicloth'
 
 group :production do
   gem 'rails_12factor'
