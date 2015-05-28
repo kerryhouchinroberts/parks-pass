@@ -33,11 +33,13 @@ $(document).ready(function() {
 
     function setMarker(lat, lng, title, id) {
       pos = new google.maps.LatLng(lat,lng);
+      var image = 'http://cdn.flaticon.com/png/32/8070.png';
       var marker = new google.maps.Marker({
         position: pos,
         map: map,
         title: title,
-        id: id
+        id: id,
+        icon: image
       });
 
       google.maps.event.addListener(marker, 'click', function(){window.location = '/parks/' + marker.id;});
