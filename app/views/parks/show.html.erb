@@ -1,7 +1,7 @@
 <h1><%= @park.name %> National Park, <%= @park.location %></h1>
 <br>
 
-<%= image_tag(@wikipage.image_urls[2]) %>
+<%= image_tag(@wikipage.image_urls[0]) %>
 <% @doi_photos["data"].each do |photo| %>
   <% if photo["location"]!= nil && (photo["location"]["name"]).include?(@park.name) || photo["data"]!= nil && (photo["data"]["tags"]).include?(@park.name)%>
     <%= image_tag (photo["images"]["standard_resolution"]["url"]) %>
