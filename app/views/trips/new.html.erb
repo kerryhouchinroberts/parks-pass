@@ -1,0 +1,41 @@
+<h1>Plan your trip to <%=@park.name%> National Park</h1>
+
+<%= form_for([@park, @trip], html: {class: "form-horizontal"}) do |f| %>
+
+<div class="form-group">
+  <label class="control-label col-md-2">
+    <%= f.label :start_date %>
+  </label>
+    <div class="form-controls col-md-4">
+    <%= f.date_select :start_date, :class =>'form-control' %>
+    </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-md-2">
+    <%= f.label :end_date %>
+  </label>
+    <div class="form-controls col-md-4">
+    <%= f.date_select :end_date, :class =>'form-control' %>
+    </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-md-2">
+    <%= f.label :notes %>
+  </label>
+    <div class="form-controls col-md-4">
+    <%= f.text_field :notes, :class =>'form-control' %>
+    </div>
+</div>
+
+<div class="form-group">
+  <div class="actions">
+    <div class="col-md-offset-2 col-md-4">
+      <input class="btn btn-primary"<%= f.submit %>
+      <%= link_to 'Cancel', park_path(@park), class:"btn btn-default" %>
+    </div>
+  </div>
+</div>
+
+<% end %>

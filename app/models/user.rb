@@ -1,3 +1,4 @@
 class User < ActiveRecord::Base
-  has_and_belongs_to_many :parks
+  has_many :trips
+  has_many :parks, through: :trips
 end

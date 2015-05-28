@@ -1,6 +1,8 @@
 <h1><%= @park.name %> National Park, <%= @park.location %></h1>
 <br>
 
+<%= link_to "Plan Your Trip", new_park_trip_path(@park) %>
+
 <%= image_tag(@wikipage.image_urls[0]) %>
 <% @doi_photos["data"].each do |photo| %>
   <% if photo["location"]!= nil && (photo["location"]["name"]).include?(@park.name) || photo["data"]!= nil && (photo["data"]["tags"]).include?(@park.name)%>
