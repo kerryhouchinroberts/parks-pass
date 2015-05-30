@@ -2,11 +2,7 @@
 @import "bootstrap-sprockets";
 @import "bootswatch/slate/variables";
 @import "bootstrap";
-
 @import "bootswatch/slate/bootswatch";
-
-//Reset inconsistencies between browsers
-// @import "reset";
 
 //Google fonts
 @import url(http://fonts.googleapis.com/css?family=Julius+Sans+One);
@@ -19,7 +15,7 @@
   font-size: 36px
 }
 
-// Google Maps sizing
+// Google Maps sizing and directions colors
 html {
   height: 100%;
 }
@@ -30,4 +26,18 @@ body {
 
 #map-canvas {
   height: 100%;
+}
+
+#directions-canvas {
+  height: 100%;
+}
+
+#directionsPanel {
+  overflow: scroll;
+  background-color: #C8C8C8;
+  color: black
+}
+
+.adp-substep {
+  background-color: #C8C8C8
 }

@@ -1,0 +1,8 @@
+<h1 id="park-name"><%= @trip.park.name %> National Park<h1>
+<h4><%= @trip.start_date %> through <%= @trip.end_date %></h4>
+<p>Notes: <%= @trip.notes %></p>
+<br>
+<div class="row" id="park-directions">
+  <div id="directions-canvas" style="height:400px" class="col-md-4"></div>
+  <div id="directionsPanel" style="height:400px" class="col-md-4"></div>
+</div>

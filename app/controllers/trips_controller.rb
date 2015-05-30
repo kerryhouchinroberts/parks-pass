@@ -16,6 +16,7 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
     @park = Park.find(params[:park_id])
     @trip.user_id = current_user.id
+    @trip.park_id = @park.id
     if @trip.save
       redirect_to park_trip_path(@park, @trip)
     else
@@ -34,7 +35,7 @@ class TripsController < ApplicationController
 
   private
   def trip_params
-    params.require(:trip).permit(:start_date, :end_date, :notes, :park_photos)
+    params.require(:trip).permit(:start_date, :end_date, :notes, :park_photos, :park_id, :user_id)
   end
 
 end
