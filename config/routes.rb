@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   post '/sign-in' => 'sessions#create', as: :signin
   get '/sign-out' => 'sessions#destroy', as: :signout
   resources :parks, only: [:index, :show] do
-    resources :trips
+    resources :trips, only: [:new, :show, :create]
   end
+
+  resources :trips, only: [:index]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

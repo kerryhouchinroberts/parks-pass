@@ -1,0 +1,6 @@
+<h1>My National Park Trips</h1>
+<% @trips.each do |trip| %>
+<ul>
+  <li><%= trip.park.name %></li>
+</ul>
+<% end %>
