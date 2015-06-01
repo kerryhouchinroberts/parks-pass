@@ -1,5 +1,8 @@
 <h1><%= @park.name %> National Park, <%= @park.location %></h1>
 <br>
+<%= @park_rec_info["RecAreaDescription"] %>
+<br>
+<br>
 
 
   <%= link_to "Plan Your Trip", new_park_trip_path(@park) %>
@@ -17,6 +20,3 @@
 <% end %>
 <br />
 <br />
-<%= @wikipage.title %>
-<br />
-<%= (@wiki.to_html).html_safe%>

@@ -14,5 +14,7 @@ class ParksController < ApplicationController
     @wikipage = Wikipedia.find("#{@park.name} National Park")
     @wiki = WikiCloth::Parser.new({
       :data => @wikipage.raw_data["query"]["pages"][@wikipage.raw_data["query"]["pages"].keys[0]]["revisions"][0]["*"] })
+    rec_fetcher = RecFetcher.new
+    @park_rec_info = rec_fetcher.park_info(@park.rec_id)
   end
 end
