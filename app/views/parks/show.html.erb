@@ -5,7 +5,17 @@
 <br>
 
 
-  <%= link_to "Plan Your Trip", new_park_trip_path(@park) %>
+<%= link_to "Plan Your Trip", new_park_trip_path(@park) %>
+
+<br>
+
+<% if @park_rec_photos["RECDATA"].count > 0 %>
+  <% @park_rec_photos["RECDATA"].each do |photo| %>
+    <%= image_tag (photo["URL"]) %>
+    <%= photo["Description"] %>
+  <% end %>
+<% end %>
+
 
 
 <%= image_tag(@wikipage.image_urls[0]) %>

@@ -16,5 +16,6 @@ class ParksController < ApplicationController
       :data => @wikipage.raw_data["query"]["pages"][@wikipage.raw_data["query"]["pages"].keys[0]]["revisions"][0]["*"] })
     rec_fetcher = RecFetcher.new
     @park_rec_info = rec_fetcher.park_info(@park.rec_id)
+    @park_rec_photos = rec_fetcher.park_photos(@park.rec_id)
   end
 end
