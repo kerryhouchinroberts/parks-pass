@@ -4,6 +4,7 @@ $(document).ready(function() {
   function initialize() {
     var myLatlng = new google.maps.LatLng(45.8056897,-100.5219935);
     var mapOptions = {
+      scrollwheel: false,
       zoom: 3,
       center: myLatlng,
       mapTypeId: google.maps.MapTypeId.SATELLITE
