@@ -8,6 +8,8 @@ class TripsController < ApplicationController
     @park = Park.find(params[:park_id])
     rec_fetcher = RecFetcher.new
     @park_links = rec_fetcher.park_links(@park.rec_id)
+    weather_fetcher = WeatherFetcher.new
+    @weather = weather_fetcher.park_weather(@park.latitude,@park.longitude)
   end
 
   def new

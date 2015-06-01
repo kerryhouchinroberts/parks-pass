@@ -12,3 +12,9 @@
     <%= link_to link["Title"], link["URL"], :target => "_blank" %><br>
   <% end %>
 <% end %>
+
+<% @weather["forecast"]["txt_forecast"]["forecastday"].each do |weather| %>
+  <%= weather["title"] %><br>
+  <%= weather["fcttext"] %><br>
+  <%= image_tag(weather["icon_url"]) %><br><br>
+<% end %>
