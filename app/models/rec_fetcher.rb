@@ -17,9 +17,18 @@ class RecFetcher
 
   def park_photos(rec_id)
     response = @rec_connection.get do |req|
-      req.url "/api/v1/recareas/#{rec_id}/media"
+      req.url "/api/v1/recareas/#{rec_id}/media/"
       req.params['apikey'] = ENV['RECREATION_GOV_KEY']
     end
     JSON.parse(response.body)
   end
+
+  def park_links(rec_id)
+    response = @rec_connection.get do |req|
+      req.url "/api/v1/recareas/#{rec_id}/links/"
+      req.params['apikey'] = ENV['RECREATION_GOV_KEY']
+    end
+    JSON.parse(response.body)
+  end
+
 end

@@ -6,3 +6,9 @@
   <div id="directions-canvas" style="height:400px" class="col-md-4"></div>
   <div id="directionsPanel" style="height:400px" class="col-md-4"></div>
 </div>
+
+<% if @park_links["RECDATA"].count > 0 %>
+  <% @park_links["RECDATA"].each do |link| %>
+    <%= link_to link["Title"], link["URL"], :target => "_blank" %><br>
+  <% end %>
+<% end %>

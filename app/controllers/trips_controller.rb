@@ -5,6 +5,9 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+    @park = Park.find(params[:park_id])
+    rec_fetcher = RecFetcher.new
+    @park_links = rec_fetcher.park_links(@park.rec_id)
   end
 
   def new
