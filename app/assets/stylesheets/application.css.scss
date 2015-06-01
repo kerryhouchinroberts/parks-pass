@@ -21,11 +21,14 @@ html {
 }
 
 body {
-  height: 100%; margin: 0; padding: 60px;
+  height: 100%;
+  margin: 0;
+  padding: 60px;
 }
 
 #map-canvas {
   height: 100%;
+  margin: 2em 0 2em 0;
 }
 
 #directions-canvas {
@@ -40,4 +43,13 @@ body {
 
 .adp-substep {
   background-color: #C8C8C8
+}
+
+// home page circles
+.home-pics {
+  padding: .7em 0 .7em 0;
+}
+
+.img-circle {
+  padding: .75em .75em .75em .75em;
 }
