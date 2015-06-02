@@ -30,9 +30,18 @@ class TripsController < ApplicationController
   end
 
   def edit
+    @trip = Trip.find(params[:id])
+    @park = Park.find(params[:park_id])
   end
 
   def update
+    @trip = Trip.find(params[:id])
+    @park = Park.find(params[:park_id])
+    if @trip.update(trip_params)
+      redirect_to park_trip_path(@park, @trip)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -40,7 +49,7 @@ class TripsController < ApplicationController
 
   private
   def trip_params
-    params.require(:trip).permit(:start_date, :end_date, :notes, :park_photos, :park_id, :user_id)
+    params.require(:trip).permit(:start_date, :end_date, :notes, :park_id, :user_id, park_photos: [])
   end
 
 end

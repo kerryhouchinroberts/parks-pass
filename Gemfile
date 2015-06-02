@@ -14,8 +14,15 @@ gem 'faraday'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'bootswatch-rails'
 gem 'dotenv-rails'
+
+#wikipedia api gems
 gem 'wikipedia-client'
 gem 'wikicloth'
+
+#carrierwave photo upload gems
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'mini_magick'
+gem 'fog'
 
 group :production do
   gem 'rails_12factor'

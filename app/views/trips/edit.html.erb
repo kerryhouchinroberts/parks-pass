@@ -1,0 +1,8 @@
+<%= form_for([@park, @trip], html: { multipart: true }) do |f| %>
+  <p>
+    <label>Pictures from my trip</label>
+    <%= f.file_field :park_photos, multiple: true %>
+  </p>
+
+  <%= f.submit %>
+<% end %>

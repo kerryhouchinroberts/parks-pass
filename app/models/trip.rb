@@ -1,6 +1,7 @@
 class Trip < ActiveRecord::Base
   belongs_to :park
   belongs_to :user
+  mount_uploaders :park_photos, ParkPhotosUploader
 
   def start_formatted
     start_date.strftime('%B %e, %Y')

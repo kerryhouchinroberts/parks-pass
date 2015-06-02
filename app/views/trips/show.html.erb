@@ -22,3 +22,7 @@
   <%= weather["fcttext"] %><br>
   <%= image_tag(weather["icon_url"]) %><br><br>
 <% end %>
+<br>
+<% @trip.park_photos.each do |photo| %>
+  <%= image_tag photo.thumb.url %>
+<% end %>
