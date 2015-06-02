@@ -1,6 +1,8 @@
 <h1 id="park-name"><%= @trip.park.name %> National Park<h1>
 <h4><%= @trip.start_formatted %> through <%= @trip.end_formatted %></h4>
-<p>Notes: <%= @trip.notes %></p>
+<% unless @trip.notes == "" %>
+  <p>Notes: <%= @trip.notes %></p>
+<% end %>
 <br>
 <div class="row" id="park-directions">
   <div id="directions-canvas" style="height:400px" class="col-md-4"></div>
@@ -13,6 +15,8 @@
   <% end %>
 <% end %>
 
+<%= link_to "Check Campsite Availability on Hipcamp", "https://www.hipcamp.com/discover#lat=#{@park.latitude}&lng=#{@park.longitude}", :target => "_blank" %>
+<br>
 <% @weather["forecast"]["txt_forecast"]["forecastday"].each do |weather| %>
   <%= weather["title"] %><br>
   <%= weather["fcttext"] %><br>
