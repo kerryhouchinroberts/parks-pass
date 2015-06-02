@@ -16,7 +16,8 @@
   <% end %>
 <% end %>
 
-<%= image_tag(@wikipage.image_urls[0]) %>
+<%= image_tag(@park.main_image) %>
+
 <% @doi_photos["data"].each do |photo| %>
   <% if photo["location"]!= nil && (photo["location"]["name"]).include?(@park.name) || photo["data"]!= nil && (photo["data"]["tags"]).include?(@park.name)%>
     <%= image_tag (photo["images"]["standard_resolution"]["url"]) %>
