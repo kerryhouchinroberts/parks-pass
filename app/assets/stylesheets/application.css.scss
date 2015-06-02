@@ -53,3 +53,44 @@ body {
 .img-circle {
   padding: 1em 1em 1em 1em;
 }
+
+.img-circle:hover {
+  opacity: .5;
+}
+
+.wrapper {
+  position: relative;
+  padding: 0;
+  width: 250 px;
+  display: block;
+  opacity: 100;
+}
+
+.text {
+  position: absolute;
+  background-color: #272B30;
+  margin: 0;
+  top: 0;
+  padding-top: 50%;
+  padding-left: 10%;
+  padding-right: 10%;
+  color: #FFFFFF;
+  width: 300px;
+  height: 300px;
+  line-height: 35px;
+  text-align: center;
+  z-index: 10;
+  opacity: 0;
+  font-family: 'Julius Sans One', sans-serif;
+  font-size: 30px;
+  }
+
+.text:hover {
+    opacity:.75;
+}
+
+.trip-date {
+  text-align: center;
+  padding-left: 33%;
+  font-family: 'Julius Sans One', sans-serif;
+}

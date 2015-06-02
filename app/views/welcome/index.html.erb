@@ -1,31 +1,55 @@
 <div class="container-fluid">
   <div class="row home-pics">
     <div class="col-md-3">
-        <%= link_to (image_tag(@park1.main_image, class: "img-circle", width:"300", height:"300")), park_path(@park1) %>
+        <%= link_to park_path(@park1), class: "wrapper" do %>
+          <span class="text"><%= @park1.name %></span>
+          <%=image_tag(@park1.main_image, class: "img-circle", width:"300", height:"300")%>
+        <% end %>
     </div>
     <div class="col-md-3">
-        <%= link_to (image_tag(@park2.main_image, class: "img-circle", width:"300", height:"300")), park_path(@park2) %>
+      <%= link_to park_path(@park2), class: "wrapper" do %>
+        <span class="text"><%= @park2.name %></span>
+        <%=image_tag(@park2.main_image, class: "img-circle", width:"300", height:"300")%>
+      <% end %>
     </div>
     <div class="col-md-3">
-        <%= link_to (image_tag(@park3.main_image, class: "img-circle", width:"300", height:"300")), park_path(@park3) %>
+      <%= link_to park_path(@park3), class: "wrapper" do %>
+        <span class="text"><%= @park3.name %></span>
+        <%=image_tag(@park3.main_image, class: "img-circle", width:"300", height:"300")%>
+      <% end %>
     </div>
     <div class="col-md-3">
-        <%= link_to (image_tag(@park4.main_image, class: "img-circle", width:"300", height:"300")), park_path(@park4) %>
+      <%= link_to park_path(@park4), class: "wrapper" do %>
+        <span class="text"><%= @park4.name %></span>
+        <%=image_tag(@park4.main_image, class: "img-circle", width:"300", height:"300")%>
+      <% end %>
     </div>
   </div>
 
   <div class="row home-pics">
     <div class="col-md-3">
-        <%= link_to (image_tag(@park5.main_image, class: "img-circle", width:"300", height:"300")), park_path(@park5) %>
+      <%= link_to park_path(@park5), class: "wrapper" do %>
+        <span class="text"><%= @park5.name %></span>
+        <%=image_tag(@park5.main_image, class: "img-circle", width:"300", height:"300")%>
+      <% end %>
     </div>
     <div class="col-md-3">
-        <%= link_to (image_tag(@park6.main_image, class: "img-circle", width:"300", height:"300")), park_path(@park6) %>
+      <%= link_to park_path(@park6), class: "wrapper" do %>
+        <span class="text"><%= @park6.name %></span>
+        <%=image_tag(@park6.main_image, class: "img-circle", width:"300", height:"300")%>
+      <% end %>
     </div>
     <div class="col-md-3">
-        <%= link_to (image_tag(@park7.main_image, class: "img-circle", width:"300", height:"300")), park_path(@park7) %>
+      <%= link_to park_path(@park7), class: "wrapper" do %>
+        <span class="text"><%= @park7.name %></span>
+        <%=image_tag(@park7.main_image, class: "img-circle", width:"300", height:"300")%>
+      <% end %>
     </div>
     <div class="col-md-3">
-        <%= link_to (image_tag(@park8.main_image, class: "img-circle", width:"300", height:"300")), park_path(@park8) %>
+      <%= link_to park_path(@park8), class: "wrapper" do %>
+        <span class="text"><%= @park8.name %></span>
+        <%=image_tag(@park8.main_image, class: "img-circle", width:"300", height:"300")%>
+      <% end %>
     </div>
   </div>
 

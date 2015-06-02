@@ -4,7 +4,11 @@
   <div class="row home-pics">
     <% @trips.each do |trip| %>
       <div class="col-md-3">
-        <%= link_to (image_tag(trip.park.main_image, class: "img-circle", width:"300", height:"300")), park_trip_path(trip.park_id, trip) %>
+        <%= link_to park_trip_path(trip.park_id, trip), class: "wrapper" do %>
+          <span class="text"><%= trip.park.name %></span>
+          <%=image_tag(trip.park.main_image, class: "img-circle", width:"300", height:"300")%>
+        <% end %>
+        <span class="trip-date"><%= trip.start_formatted_sm %> - <%= trip.end_formatted_sm %></span>      
       </div>
     <% end %>
   </div>
