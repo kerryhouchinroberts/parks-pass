@@ -1,6 +1,11 @@
 <h1>My National Park Trips</h1>
-<% @trips.each do |trip| %>
-<ul>
-  <li><%= trip.park.name %></li>
-</ul>
-<% end %>
+
+<div class="container-fluid">
+  <div class="row home-pics">
+    <% @trips.each do |trip| %>
+      <div class="col-md-3">
+        <%= link_to (image_tag(trip.park.main_image, class: "img-circle", width:"300", height:"300")), park_trip_path(trip.park_id, trip) %>
+      </div>
+    <% end %>
+  </div>
+</div>
