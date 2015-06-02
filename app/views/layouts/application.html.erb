@@ -27,7 +27,8 @@
             <% if !current_user %>
             <li><%= link_to "Sign In", '/auth/instagram' %></li>
             <% else %>
-            <li><%= link_to "Sign Out", '/sign-out' %>
+              <li><%= link_to "My Trips", trips_path %></li>
+              <li><%= link_to "Sign Out", '/sign-out' %></li>
             <% end %>
           </ul>
         </div><!--/.nav-collapse -->
