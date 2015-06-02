@@ -17,5 +17,6 @@ class ParksController < ApplicationController
     rec_fetcher = RecFetcher.new
     @park_rec_info = rec_fetcher.park_info(@park.rec_id)
     @park_rec_photos = rec_fetcher.park_photos(@park.rec_id)
+    @park_links = rec_fetcher.park_links(@park.rec_id)
   end
 end

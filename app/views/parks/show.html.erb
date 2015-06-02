@@ -19,6 +19,16 @@
   <% end %>
 <% end %>
 
+<br>
+
+<% if @park_links["RECDATA"].count > 0 %>
+  <% @park_links["RECDATA"].each do |link| %>
+    <%= link_to link["Title"], link["URL"], :target => "_blank" %><br>
+  <% end %>
+<% end %>
+
+<br>
+
 <%= image_tag(@park.main_image) %>
 
 <% @doi_photos["data"].each do |photo| %>
