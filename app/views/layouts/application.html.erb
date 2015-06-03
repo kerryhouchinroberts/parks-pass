@@ -35,14 +35,28 @@
       </div>
     </nav>
 
-    <div class="container">
-
-        <%= yield %>
-
-
-    </div>
+      <%= yield %>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
   </body>
+<hr>
+<div class="container">
+  <footer>
+    <div class="row">
+      <div class="col-md-12">
+        <%= link_to "Home", root_path %>
+        <% if current_user != nil %>
+        |
+        <%= link_to "My Trips", trips_path %>
+        <% end %>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          Photos courtesy of <a href="https://unsplash.com/" target="_blank">Unsplash</a> & <a href="https://search.creativecommons.org/" target="_blank">Creative Commons</a>. Copyright 2015.
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
 </html>
