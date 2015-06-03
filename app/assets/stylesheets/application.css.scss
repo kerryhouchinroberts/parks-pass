@@ -94,3 +94,15 @@ body {
   padding-left: 33%;
   font-family: 'Julius Sans One', sans-serif;
 }
+
+// Recreation.gov photo carousel
+.carousel-caption {
+  position:relative;
+  left:2%;
+  padding-right:2%;
+  margin-top:2%;
+}
+
+.carousel-control > .glyphicon {
+  position: inherit;
+}

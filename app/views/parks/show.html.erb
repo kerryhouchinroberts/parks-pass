@@ -1,44 +1,77 @@
-<h1><%= @park.name %> National Park, <%= @park.location %></h1>
-<h3>Est. <%= @park.established %></h3>
-<br>
-<%= @park_rec_info["RecAreaDescription"] %>
-<br>
-<%= @park_rec_info["RecAreaPhone"] %>
-<br>
-<br>
+<div class="container-fluid">
+
+  <h1><%= @park.name %> National Park, <%= @park.location %></h1>
+  <h3>Est. <%= @park.established %></h3>
+  <br>
+  <%= @park_rec_info["RecAreaDescription"] %>
+  <br>
+  <%= @park_rec_info["RecAreaPhone"] %>
+  <br>
+  <br>
 
 
-<%= link_to "Plan Your Trip", new_park_trip_path(@park) %>
+  <%= link_to "Plan Your Trip", new_park_trip_path(@park) %>
 
-<br>
+  <br>
+  <div class="row">
+    <div class="col-md-5">
+      <% if @park_rec_photos["RECDATA"].count > 0 %>
+        <div id="rec-gov-carousel" class="carousel slide" data-ride="carousel" data-interval="7000">
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <%= image_tag(@first_park_rec_photo["URL"]) %>
+              <div class="carousel-caption">
+                <%= @first_park_rec_photo["Description"] %>
+              </div>
+            </div>
+            <% if @remaining_park_rec_photos.count > 0 %>
+            <% @remaining_park_rec_photos.each do |photo| %>
+            <div class="item">
+              <%= image_tag (photo["URL"]) %>
+              <div class="carousel-caption">
+                <%= photo["Description"] %>
+              </div>
+            </div>
+            <% end %>
+            <% end %>
+          </div>
 
-<% if @park_rec_photos["RECDATA"].count > 0 %>
-  <% @park_rec_photos["RECDATA"].each do |photo| %>
-    <%= image_tag (photo["URL"]) %>
-    <%= photo["Description"] %>
+          <!-- Controls -->
+          <a class="left carousel-control" href="#rec-gov-carousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#rec-gov-carousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <% if @park_links["RECDATA"].count > 0 %>
+    <% @park_links["RECDATA"].each do |link| %>
+      <%= link_to link["Title"], link["URL"], :target => "_blank" %><br>
+    <% end %>
   <% end %>
-<% end %>
 
-<br>
+  <br>
 
-<% if @park_links["RECDATA"].count > 0 %>
-  <% @park_links["RECDATA"].each do |link| %>
-    <%= link_to link["Title"], link["URL"], :target => "_blank" %><br>
+
+
+  <% if current_user != nil %>
+  <% @doi_photos["data"].each do |photo| %>
+    <% if photo["location"]!= nil && (photo["location"]["name"]).include?(@park.name) || photo["data"]!= nil && (photo["data"]["tags"]).include?(@park.name)%>
+      <%= image_tag (photo["images"]["standard_resolution"]["url"]) %>
+    <% end %>
   <% end %>
-<% end %>
 
-<br>
-
-<%= image_tag(@park.main_image) %>
-
-<% @doi_photos["data"].each do |photo| %>
-  <% if photo["location"]!= nil && (photo["location"]["name"]).include?(@park.name) || photo["data"]!= nil && (photo["data"]["tags"]).include?(@park.name)%>
+  <% @photos["data"].each do |photo| %>
     <%= image_tag (photo["images"]["standard_resolution"]["url"]) %>
   <% end %>
-<% end %>
-
-<% @photos["data"].each do |photo| %>
-  <%= image_tag (photo["images"]["standard_resolution"]["url"]) %>
-<% end %>
-<br />
-<br />
+  <br />
+  <br />
+  <% end %>
+</div>
