@@ -12,11 +12,11 @@ class Trip < ActiveRecord::Base
   end
 
   def start_formatted_sm
-    start_date.strftime('%m/%e/%y')
+    start_date.strftime('%m/%d/%y')
   end
 
   def end_formatted_sm
-    end_date.strftime('%m/%e/%y')
+    end_date.strftime('%m/%d/%y')
   end
 
 end
