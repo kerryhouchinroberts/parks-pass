@@ -1,14 +1,16 @@
-<h1>My National Park Trips</h1>
-
 <div class="container-fluid">
+  <div class="row col-md-offset-4 col-md-8">
+    <h2><%=current_user.name%>'s National Park Trips</h2>
+  </div>
+
   <div class="row home-pics">
     <% @trips.each do |trip| %>
-      <div class="col-md-3">
+      <div class="col-md-3 text-center">
         <%= link_to park_trip_path(trip.park_id, trip), class: "wrapper" do %>
           <span class="text"><%= trip.park.name %></span>
           <%=image_tag(trip.park.main_image, class: "img-circle", width:"300", height:"300")%>
         <% end %>
-        <span class="trip-date"><%= trip.start_formatted_sm %> - <%= trip.end_formatted_sm %></span>      
+        <p><%= trip.start_formatted_sm %> - <%= trip.end_formatted_sm %></p>
       </div>
     <% end %>
   </div>
