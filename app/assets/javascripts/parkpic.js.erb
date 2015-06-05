@@ -8,7 +8,9 @@ $(document).ready(function(){
       url: "/parks/parkname"
       })
       .done(function(data){
-        $("#park-image").css("background-image", "url(/assets/" + data.main_image + ")");
+        console.log("url(<%= asset_path('" + data.main_image + "')%>)");
+        console.log(data.main_image);
+        $("#park-image").css("background-image", "url(<%= asset_path('assets/" + data.main_image + "')%>)");
     });
   };
 
