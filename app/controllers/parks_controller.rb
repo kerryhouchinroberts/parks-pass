@@ -1,4 +1,5 @@
 class ParksController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   def index
     @parks = Park.all
@@ -20,5 +21,10 @@ class ParksController < ApplicationController
       @remaining_park_rec_photos = @park_rec_photos["RECDATA"].drop(1)
     end
     @park_links = rec_fetcher.park_links(@park.rec_id)
+  end
+
+  def parkname
+    @park = Park.find_by_name(params[:name])
+    render json: @park
   end
 end

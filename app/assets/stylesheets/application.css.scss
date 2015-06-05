@@ -5,9 +5,9 @@
 @import "bootswatch/slate/bootswatch";
 
 //Google fonts
-@import url(http://fonts.googleapis.com/css?family=Julius+Sans+One);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
-@import url(http://fonts.googleapis.com/css?family=Allura);
+@import url(https://fonts.googleapis.com/css?family=Julius+Sans+One);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Allura);
 
 
 //Homepage styling
@@ -133,4 +133,31 @@ h1,h2,h3,h4,h5,h6,p{
 }
 .panel-primary {
   margin-top: 25px;
+}
+
+#park-image {
+    background: url('') 50% 0 no-repeat fixed;
+    height: 500px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    padding: 100px 0;
+}
+#park-about {
+    height: auto;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    padding: 200px 0;
+}
+#about {
+    height: auto;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    padding: 100px 0;
+    color: #fff;
 }

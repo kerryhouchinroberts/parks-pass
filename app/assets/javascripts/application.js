@@ -15,3 +15,4 @@
 //= require map
 //= require bootstrap-sprockets
 //= require directions
+//= require parkpic

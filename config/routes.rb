@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#create'
   post '/sign-in' => 'sessions#create', as: :signin
   get '/sign-out' => 'sessions#destroy', as: :signout
+  post '/parks/parkname' => 'parks#parkname'
   resources :parks, only: [:index, :show] do
     resources :trips, only: [:new, :show, :create, :edit, :update]
   end
