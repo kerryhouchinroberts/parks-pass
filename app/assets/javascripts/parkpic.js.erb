@@ -8,7 +8,7 @@ $(document).ready(function(){
       url: "/parks/parkname"
       })
       .done(function(data){
-        $("#park-image").css("background-image", "url(<%= asset_url('assets/" + data.main_image + "')%>)");
+        $("#park-image").css("background-image", "url(<%= path_to_asset('/assets/" + data.main_image + "')%>)");
 
     });
   };
