@@ -45,9 +45,16 @@ $(document).ready(function() {
 
       google.maps.event.addListener(marker, 'click', function(){window.location = '/parks/' + marker.id;});
     }
+
+      $("#map-canvas").one('mousemove', function () {
+        var currentCenter = map.getCenter();
+        google.maps.event.trigger(map, "resize");
+        map.setCenter(currentCenter);
+      });
   }
 
   google.maps.event.addDomListener(window, 'load', initialize);
+
 
 
 });
