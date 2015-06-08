@@ -112,6 +112,7 @@ body {
 
 #rec-gov-carousel {
   margin-top: 18%;
+  max-width: 480px;
 }
 
 //header & button typography
@@ -134,7 +135,7 @@ h1,h2,h3,h4,h5,h6,p{
   }
 }
 
-//parks show page header image
+//parks show page
 .imgContainer{
   overflow:hidden;
   width:100%;
@@ -146,7 +147,6 @@ h1,h2,h3,h4,h5,h6,p{
   margin: -100px 0 0 0;
 }
 
-//parks show page navigation bar
 .btn-warning {
   margin-top: 25px;
 }
