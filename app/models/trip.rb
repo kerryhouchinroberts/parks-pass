@@ -22,7 +22,7 @@ class Trip < ActiveRecord::Base
 
   def end_date_cannot_be_before_start
     if end_date < start_date
-      errors.add(:end_date, "cannot be before start date")
+      errors.add(:end_date, "cannot be before start date.")
     end
   end
 

@@ -30,6 +30,7 @@ class TripsController < ApplicationController
     if @trip.save
       redirect_to park_trip_path(@park, @trip)
     else
+      flash.now[:alert] = @trip.errors.full_messages
       render :new
     end
   end

@@ -21,6 +21,9 @@
           <div class="form-controls col-md-5">
           <%= f.date_select :end_date, :class =>'form-control', :order => [ :month, :day, :year] %>
           </div>
+          <% if alert %>
+            <%= alert[0] %>
+          <% end %>
       </div>
 
       <div class="form-group">
