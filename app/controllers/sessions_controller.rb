@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user.update_attributes(token: env['omniauth.auth']['credentials']['token'])
     user.update_attributes(name: env['omniauth.auth']['info']['name'])
     user.update_attributes(image_url: env['omniauth.auth']['info']['image'])
-      redirect_to :back
+      redirect_to root_path
   end
 
   def destroy
