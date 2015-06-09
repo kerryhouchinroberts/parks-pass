@@ -95,32 +95,32 @@
 
 <!-- Modal -->
 <% if current_user != nil %>
-<div class="modal fade" id="instagramModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="instagramModal" tabindex="-1" role="dialog" aria-labelledby="instagramModal" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header text-center">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><%=@park.name%> National Park Instagram Photos
+        <h4 class="modal-title" id="instagramModalLabel"><%=@park.name%> National Park Instagram Photos</h4>
       </div>
       <% if @doi_photos["data"].count > 0 && @photos["data"].count > 0 %>
-        <div class="modal-body text-center">
-          <% if current_user != nil %>
-            <% @doi_photos["data"].each do |photo| %>
-              <% if photo["location"]!= nil && (photo["location"]["name"]).include?(@park.name) || photo["data"]!= nil && (photo["data"]["tags"]).include?(@park.name)%>
-                <%= link_to image_tag(photo["images"]["thumbnail"]["url"]), photo["link"], :target => "_blank" %>
-              <% end %>
-            <% end %>
+      <div class="modal-body text-center">
+        <% if current_user != nil %>
+        <% @doi_photos["data"].each do |photo| %>
+        <% if photo["location"]!= nil && (photo["location"]["name"]).include?(@park.name) || photo["data"]!= nil && (photo["data"]["tags"]).include?(@park.name)%>
+        <%= link_to image_tag(photo["images"]["thumbnail"]["url"]), photo["link"], :target => "_blank" %>
+        <% end %>
+        <% end %>
 
-            <% @photos["data"].each do |photo| %>
-              <%= link_to image_tag(photo["images"]["thumbnail"]["url"]), photo["link"], :target => "_blank" %>
-            <% end %>
-          <% end %>
-        </div>
+        <% @photos["data"].each do |photo| %>
+        <%= link_to image_tag(photo["images"]["thumbnail"]["url"]), photo["link"], :target => "_blank" %>
+        <% end %>
+        <% end %>
+      </div>
       <% else %>
-        <div class="modal-body text-center">
-          <p>Bummer, it looks like there aren't any recent Instagram photos from <%= @park.name %> National Park. Get out there and take some!</p>
-          <p><%= link_to "Plan Your Trip", new_park_trip_path(@park), class:"btn btn-warning" %></p>
-        </div>
+      <div class="modal-body text-center">
+        <p>Bummer, it looks like there aren't any recent Instagram photos from <%= @park.name %> National Park. Get out there and take some!</p>
+        <p><%= link_to "Plan Your Trip", new_park_trip_path(@park), class:"btn btn-warning" %></p>
+      </div>
       <% end %>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
