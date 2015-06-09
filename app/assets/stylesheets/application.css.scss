@@ -247,6 +247,11 @@ h1,h2,h3,h4,h5,h6,p{
 
 }
 
+#user-photo-carousel {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 //trips edit form
 input[id="trip_park_photos"]{
   padding-top: 10px;

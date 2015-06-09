@@ -112,17 +112,17 @@
         <h4 class="modal-title" id="userPhotoModalLabel">My <%= @park.name %> National Park Album</h4>
       </div>
 
-      <div class="modal-body text-center">
+      <div class="modal-body">
         <div id="user-photo-carousel" class="carousel slide" data-ride="carousel" data-interval="7000">
           <!--wrapper for slides -->
           <div class="carousel-inner" role="listbox">
             <div class="item active">
-              <%= image_tag @first_trip_photo, class:"user-photo text-center" %>
+              <%= image_tag @first_trip_photo.large.url, class:"user-photo text-center" %>
             </div>
             <% if @remaining_trip_photos.count > 0 %>
             <% @remaining_trip_photos.each do |photo| %>
             <div class="item">
-              <%= image_tag photo, class:"user-photo text-center" %>
+              <%= image_tag photo.large.url, class:"user-photo text-center" %>
             </div>
             <% end %>
             <% end %>
