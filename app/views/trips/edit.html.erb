@@ -1,8 +1,35 @@
-<%= form_for([@park, @trip], html: { multipart: true }) do |f| %>
-  <p>
-    <label>Pictures from my trip</label>
-    <%= f.file_field :park_photos, multiple: true %>
-  </p>
+<div class="container">
+  <div class="well col-md-offset-2 col-md-8 text-center">
+    <h1>Upload photos from your trip to <%= @park.name %> National Park</h1>
 
-  <%= f.submit %>
-<% end %>
+    <%= form_for([@park, @trip], html: { multipart: true, class:"form-horizontal" }) do |f| %>
+
+    <div class="form-group">
+      <label class="control-label col-md-3">
+        Choose Photos to Upload...
+      </label>
+      <div class="form-controls col-md-5">
+        <%= f.file_field :park_photos, multiple: true %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-md-3">
+        <%= f.label :notes, "Edit Your Notes (Optional)" %>
+      </label>
+      <div class="form-controls col-md-5">
+      <%= f.text_field :notes, :class =>'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="actions">
+        <div class="col-md-offset-5 col-md-4">
+          <input class="btn btn-primary"<%= f.submit %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+  </div>
+</div>

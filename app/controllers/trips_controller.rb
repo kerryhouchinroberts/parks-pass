@@ -1,6 +1,7 @@
 class TripsController < ApplicationController
   def index
-    @trips = Trip.where(user_id: current_user.id)
+    trips = Trip.where(user_id: current_user.id)
+    @sorted_trips = trips.order(:end_date).reverse
   end
 
   def show
@@ -10,6 +11,10 @@ class TripsController < ApplicationController
     @park_links = rec_fetcher.park_links(@park.rec_id)
     weather_fetcher = WeatherFetcher.new
     @weather = weather_fetcher.park_weather(@park.latitude,@park.longitude)
+    if @trip.park_photos.count > 0
+      @first_trip_photo = @trip.park_photos[0]
+      @remaining_trip_photos = @trip.park_photos.drop(1)
+    end
   end
 
   def new

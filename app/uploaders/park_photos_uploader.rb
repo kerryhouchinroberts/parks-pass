@@ -32,8 +32,12 @@ class ParkPhotosUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
+  version :large do
+    process :resize_to_fill => [600, 600]
+  end
+
   version :thumb do
-     process :resize_to_fill => [300, 300]
+     process :resize_to_fill => [350, 350]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

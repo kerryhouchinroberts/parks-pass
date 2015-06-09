@@ -13,7 +13,7 @@
   </div>
   <% else %>
   <div class="row home-pics">
-    <% @trips.each do |trip| %>
+    <% @sorted_trips.each do |trip| %>
       <div class="col-md-3 text-center">
         <%= link_to park_trip_path(trip.park_id, trip), class: "wrapper" do %>
           <span class="text"><%= trip.park.name %></span>

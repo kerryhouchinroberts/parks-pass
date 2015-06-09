@@ -1,28 +1,148 @@
-<h1 id="park-name"><%= @trip.park.name %> National Park<h1>
-<h4><%= @trip.start_formatted %> through <%= @trip.end_formatted %></h4>
-<% unless @trip.notes == "" %>
-  <p>Notes: <%= @trip.notes %></p>
-<% end %>
-<br>
-<div class="row" id="park-directions">
-  <div id="directions-canvas" style="height:400px" class="col-md-4"></div>
-  <div id="directionsPanel" style="height:400px" class="col-md-4"></div>
+<!-- section 1 -->
+<section id="park-name">
+  <div class="container">
+    <h1><%= @trip.park.name %> National Park Trip<h1>
+    <h4><%= @trip.start_formatted %> through <%= @trip.end_formatted %></h4>
+  </div>
+</section>
+
+<!-- section 2 -->
+<section id="park-image" data-speed="4" data-type="background">
+  <div class="container">
+  </div>
+</section>
+
+<!-- section 3 -->
+<section id="about" data-speed="2" data-type="background">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <% if @trip.end_date >= Date.today %>
+          <h3><%= @trip.park.name %> National Park Info</h3>
+        <% else %>
+          <h3>My <%= @trip.park.name %> National Park Album</h3>
+        <% end %>
+        <% unless @trip.notes == "" %>
+          <h5>Notes: <%= @trip.notes %></h5>
+        <% end %>
+      </div>
+      <% if @trip.end_date >= Date.today %>
+      <div class ="col-md-4 col-md-offset-1">
+        <%= link_to "Check Campsite<br />Availability on Hipcamp".html_safe, "https://www.hipcamp.com/discover#lat=#{@park.latitude}&lng=#{@park.longitude}", :target => "_blank", class: "btn btn-warning" %>
+      </div>
+      <% elsif (@trip.park_photos.count == 0) && (@trip.end_date <= Date.today) %>
+      <div class ="col-md-4 col-md-offset-1">
+        <%= link_to "Upload Your Photos", edit_park_trip_path(@park, @trip), class: "btn btn-warning" %>
+      </div>
+      <% elsif @trip.park_photos.count > 0 %>
+      <div class ="col-md-4 col-md-offset-1">
+        <%= link_to "Upload More Photos", edit_park_trip_path(@park, @trip), class: "btn btn-warning" %>
+      </div>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col-md-8" role="tabpanel">
+        <% if @trip.end_date >= Date.today %>
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#weather" aria-controls="weather" role="tab" data-toggle="tab">Weather</a></li>
+            <li role="presentation"><a href="#directions" aria-controls="directions" role="tab" data-toggle="tab">Directions</a></li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in active" id="weather">
+              <% @weather["forecast"]["txt_forecast"]["forecastday"].each do |weather| %>
+                <div class="col-md-1"><%= image_tag(weather["icon_url"]) %></div>
+                <div class="col-md-11">
+                <p><%= weather["title"] %></p>
+                <p><%= weather["fcttext"] %><p><br /><br />
+              </div>
+              <% end %>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="directions">
+              <div id="directionsPanel" class="col-md-6"></div>
+              <div id="directions-canvas" class="col-md-6"></div>
+            </div>
+          </div>
+        <% else %>
+          <% if @trip.park_photos.count > 0 %>
+          <a data-toggle="modal" data-target="#userPhotoModal">View Photos in Gallery Mode</a>
+            <div id="my-photos-container" class="my-photos">
+              <% @trip.park_photos.each do |photo| %>
+                <%= image_tag photo.thumb.url, class: "img-rounded" %>
+              <% end %>
+            </div>
+          <% else %>
+          <div class="col-md-10">
+            <%= link_to edit_park_trip_path(@park, @trip), class: "trips-wrapper" do %>
+              <span class="trips-text">Click to upload your <%= @park.name %> National Park Trip Photos</span>
+              <%=image_tag(@park.main_image, class: "img-rounded", width:"100%")%>
+            <% end %>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="col-md-4 pull-right">
+        <% if @park_links["RECDATA"].count > 0 %>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Helpful Links from Recreation.gov</h3>
+            </div>
+        <% @park_links["RECDATA"].each do |link| %>
+            <div class="panel-body">
+              <%= link_to link["Title"], link["URL"], :target => "_blank" %>
+            </div>
+        <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<% if @trip.park_photos.count > 0 %>
+<div class="modal fade" id="userPhotoModal" tabindex="-1" role="dialog" aria-labelledby="userPhotoModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="userPhotoModalLabel">My <%= @park.name %> National Park Album</h4>
+      </div>
+
+      <div class="modal-body text-center">
+        <div id="user-photo-carousel" class="carousel slide" data-ride="carousel" data-interval="7000">
+          <!--wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <%= image_tag @first_trip_photo, class:"user-photo text-center" %>
+            </div>
+            <% if @remaining_trip_photos.count > 0 %>
+            <% @remaining_trip_photos.each do |photo| %>
+            <div class="item">
+              <%= image_tag photo, class:"user-photo text-center" %>
+            </div>
+            <% end %>
+            <% end %>
+          </div>
+
+          <!-- Carousel Controls -->
+          <a class="left carousel-control" href="#user-photo-carousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#user-photo-carousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
-
-<% if @park_links["RECDATA"].count > 0 %>
-  <% @park_links["RECDATA"].each do |link| %>
-    <%= link_to link["Title"], link["URL"], :target => "_blank" %><br>
-  <% end %>
-<% end %>
-
-<%= link_to "Check Campsite Availability on Hipcamp", "https://www.hipcamp.com/discover#lat=#{@park.latitude}&lng=#{@park.longitude}", :target => "_blank" %>
-<br>
-<% @weather["forecast"]["txt_forecast"]["forecastday"].each do |weather| %>
-  <%= weather["title"] %><br>
-  <%= weather["fcttext"] %><br>
-  <%= image_tag(weather["icon_url"]) %><br><br>
-<% end %>
-<br>
-<% @trip.park_photos.each do |photo| %>
-  <%= image_tag photo.thumb.url %>
 <% end %>
