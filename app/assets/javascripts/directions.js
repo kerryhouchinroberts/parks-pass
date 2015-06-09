@@ -5,7 +5,7 @@ $(function(){
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
         var coords = new google.maps.LatLng(latitude, longitude);
-        var dest = document.getElementById("park-name").innerHTML;
+        var dest = $("#park-directions-name").text();
         var directionsService = new google.maps.DirectionsService();
         var directionsDisplay = new google.maps.DirectionsRenderer();
         var dirPanel = document.getElementById("directionsPanel");
@@ -27,14 +27,17 @@ $(function(){
         var request = {
           origin: coords,
           destination: dest,
-          travelMode: google.maps.DirectionsTravelMode.DRIVING
+          travelMode: google.maps.DirectionsTravelMode.DRIVING,
+          provideRouteAlternatives: false
         };
 
-        directionsService.route(request, function(response, status) {
+          directionsService.route(request, function(response, status) {
           if (status == google.maps.DirectionsStatus.OK) {
+            console.log(response, status);
             directionsDisplay.setDirections(response);
           }
           else if (status === "ZERO_RESULTS"){
+            console.log(response, status);
             var content = document.createTextNode("Sorry, driving directions are not available from your location. Try taking a plane.");
             dirPanel.appendChild(content);
           }
@@ -42,6 +45,7 @@ $(function(){
       });
     }
   }
-
-  google.maps.event.addDomListener(window, 'load', initialize);
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    initialize();
+  });
 });
