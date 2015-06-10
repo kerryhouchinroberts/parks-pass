@@ -17,7 +17,7 @@
       <div class="col-md-3 text-center">
         <%= link_to park_trip_path(trip.park_id, trip), class: "wrapper" do %>
           <span class="text"><%= trip.park.name %></span>
-          <%=image_tag(trip.park.main_image, class: "img-circle", width:"300", height:"300")%>
+          <%=image_tag(trip.park.main_image, class: "img-circle", width:'100%', height:"100%")%>
         <% end %>
         <p><%= trip.start_formatted_sm %> - <%= trip.end_formatted_sm %></p>
       </div>
