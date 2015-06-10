@@ -10,7 +10,7 @@ $(function(){
         var directionsDisplay = new google.maps.DirectionsRenderer();
         var dirPanel = document.getElementById("directionsPanel");
         var mapOptions = {
-          zoom:7,
+          minZoom: 3,
           center: coords,
           navigationControlOptions:
           {
@@ -42,10 +42,17 @@ $(function(){
             dirPanel.appendChild(content);
           }
         });
+
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+          var center = map.getCenter();
+          google.maps.event.trigger(map, "resize");
+          map.setCenter(center);
+          map.setZoom(4);
+        });
+
       });
     }
   }
-  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-    initialize();
-  });
+  google.maps.event.addDomListener(window, 'load', initialize);
+
 });
