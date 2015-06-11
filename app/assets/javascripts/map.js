@@ -1,7 +1,5 @@
 $(document).ready(function() {
   var map;
-  resizeMapModal();
-
 
   function initialize() {
     var myLatlng = new google.maps.LatLng(45.8056897,-100.5219935);
@@ -49,25 +47,14 @@ $(document).ready(function() {
       google.maps.event.addListener(marker, 'click', function(){window.location = '/parks/' + marker.id;});
     }
 
-    $("#map-canvas").one('mousemove', function () {
-      var currentCenter = map.getCenter();
-      google.maps.event.trigger(map, "resize");
-      map.setCenter(currentCenter);
+    $('#mapsModal').on('shown.bs.modal', function(e){
+        var currentCenter = map.getCenter();
+        google.maps.event.trigger(map, "resize");
+        map.setCenter(currentCenter);
     });
 
-
   }
-
 
   google.maps.event.addDomListener(window, 'load', initialize);
 
 });
-
-function resizeMapModal(){
-  $('#map-canvas').on('shown.bs.modal', function(e){
-    alert("modal open");
-    var currentCenter = map.getCenter();
-    google.maps.event.trigger(map, "resize");
-    map.setCenter(currentCenter);
-  });
-}

@@ -146,3 +146,10 @@
   </div>
 </div>
 <% end %>
+
+<script>
+  $(function(){
+    getBackgroundImage();
+    google.maps.event.addDomListener(window, 'load', initializeDirections);
+  });
+</script>
